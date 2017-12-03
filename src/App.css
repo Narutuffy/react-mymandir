@@ -1,0 +1,115 @@
+    .container {
+        margin-top: 10px
+    }
+
+    .row { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        position: relative;
+    }
+
+    .suggestions {
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+    max-height: 350px;
+    overflow-y: auto;
+    /*perspective:20px;*/
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+    .form-group {
+        width: 310px
+    }
+
+    .suggestions li {
+    background:white;
+    list-style: none;
+    border: 1px solid #D8D8D8;
+    margin:0;
+    padding:10px;
+    transition:background 0.2s;
+    margin:0px;
+    text-transform: capitalize;
+    cursor: pointer;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .temple_card {
+        margin-top: 75px;
+        position: absolute;
+        width: 500px;
+        min-height: 250px;
+        padding: 20px;
+        border: 1px solid #cbcbcb;
+        box-shadow: 5px 5px 5px #888888;
+        color: #161616;
+        z-index: -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* color: #9d9d9d storehub grey */
+    }
+
+    .font_size_m {
+        font-size: 15px;
+    }
+
+    .temple_card .top_section {
+        display: flex;
+        margin-bottom: 25px;
+    }
+
+    .loader {
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid rgb(258,128,0);
+        width: 35px;
+        height: 35px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+      }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    img {
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
+    }
+
+    a, a:hover {
+        display: block;
+        text-decoration: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        h3 {
+            font-size: 20px;
+        }
+
+        .temple_card {
+            width: 90%
+        }
+
+        img {
+            height: 85px;
+            width: 85px;
+        }
+
+        .font_size_m {
+            font-size: 13px;
+        }
+
+        
+    }

@@ -184,7 +184,7 @@ class App extends Component {
     return (
       <div className="App">
         <nav className="navbar navbar-light" style={{ backgroundColor: '#ff8000' }} >
-          <span className="navbar-brand" style={{color: '#fff'}}>MyMandir</span>
+          <span className="navbar-brand" style={{color: '#fff'}}>mymandir</span>
         </nav>
         <div className="container">
           <div className="row" >

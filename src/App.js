@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import temples from './templeNames.json';
+import altImg from './alt.png';
 
 const API_KEY = 'AIzaSyB2-Mdsde1s7Xnee32Y4z9x6JTFOR8Dspk';
 const FETCH_TEMPLE_BY_SEARCH = `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${API_KEY}`;
@@ -32,7 +33,6 @@ class App extends Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({
       value: event.target.value
     },this.displayMatches);
@@ -70,8 +70,7 @@ class App extends Component {
 
   getSetPhoto(photoId) {
     return fetch(`${FETCH_TEMPLE_IMAGE}&photoreference=${photoId}`)
-    .then(({url}) => this.setState({templeDetails: {...this.state.templeDetails, thumbnail: url}}))
-    .catch((e) => console.log("There are no Photos of this location")); 
+    .then(({url}) => this.setState({templeDetails: {...this.state.templeDetails, thumbnail: url}}));
   }
 
   getSetNearbyTemples(place_id, lat, lng) {
@@ -96,7 +95,7 @@ class App extends Component {
           nearbyTemples
         },
         contentStatus: "fetched"
-      },()=>console.log(this.state));
+      });
     })
   }
 
@@ -106,7 +105,6 @@ class App extends Component {
     fetch(`${FETCH_TEMPLE_BY_SEARCH}&query=${templeName}`)
       .then(blob => blob.json())
       .then(({results}) => {
-        console.log(results[0], this.state);
         const { geometry, place_id, photos, formatted_address, name } = results[0];
         const {lat, lng} = geometry.location;
         let photoId = photos? photos[0].photo_reference : null; 
@@ -159,7 +157,7 @@ class App extends Component {
       <div className= "temple_card">
         <div style={{marginRight: 'auto'}}>
           <div className= "top_section">
-            <img src={thumbnail} />
+            <img src={thumbnail} onError={() => this.setState({templeDetails:{...this.state.templeDetails ,thumbnail: altImg}})}  />
               <div>
                 <h3>{name}</h3>
                 <a href={`https://www.google.com/maps/place/?q=place_id:${placeId}`} target="_blank" className="font_size_m" >{address}</a>
